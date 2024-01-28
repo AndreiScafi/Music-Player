@@ -157,6 +157,19 @@ const playNextSong = () => {
 };
 // End of Play next song function
 
+// Play previous song function
+const playPreviousSong = () => {
+    if (userData?.currentSong === null) {
+        return
+    } else {
+        const currentSongIndex = getCurrentSongIndex();
+        const previousSong = userData?.songs[currentSongIndex - 1];
+        playSong(previousSong.id);
+    }
+};
+// End of Play previous song function
+
+
 // End of functions
 
 //Buttons
@@ -171,6 +184,8 @@ playButton.addEventListener('click', () => {
 pauseButton.addEventListener('click', pauseSong);
 
 nextButton.addEventListener('click', playNextSong);
+
+previousButton.addEventListener('click', playPreviousSong);
 //End of Buttons
 
 renderSongs(userData?.songs);
