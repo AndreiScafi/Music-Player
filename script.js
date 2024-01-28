@@ -145,6 +145,18 @@ const getCurrentSongIndex = () => {
 };
 // end of get Current Song Index function
 
+// Play next song function
+const playNextSong = () => {
+    if (userData?.currentSong === null) {
+        playSong(userData?.songs[0].id);
+    } else {
+        const currentSongIndex = getCurrentSongIndex();
+        const nextSong = userData?.songs[currentSongIndex + 1];
+        playSong(nextSong.id);
+    }
+};
+// End of Play next song function
+
 // End of functions
 
 //Buttons
@@ -157,6 +169,8 @@ playButton.addEventListener('click', () => {
 });
 
 pauseButton.addEventListener('click', pauseSong);
+
+nextButton.addEventListener('click', playNextSong);
 //End of Buttons
 
 renderSongs(userData?.songs);
