@@ -139,7 +139,15 @@ const renderSongs = (array) => {
 };
 // End of renderSongs function
 
+// Get Current Song Index function
+const getCurrentSongIndex = () => {
+    return userData?.songs.indexOf(userData.currentSong);
+};
+// end of get Current Song Index function
+
 // End of functions
+
+//Buttons
 playButton.addEventListener('click', () => {
     if (userData?.currentSong === null) {
         playSong(userData?.songs[0].id);
@@ -149,5 +157,6 @@ playButton.addEventListener('click', () => {
 });
 
 pauseButton.addEventListener('click', pauseSong);
+//End of Buttons
 
 renderSongs(userData?.songs);
