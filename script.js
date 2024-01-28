@@ -104,6 +104,7 @@ const playSong = (id) => {
 
     userData.currentSong = song;
     playButton.classList.add('playing');
+    highlightCurrentSong();
     audio.play();
 };
 // End of play song function
@@ -169,6 +170,19 @@ const playPreviousSong = () => {
 };
 // End of Play previous song function
 
+// Highlight Current Song Function
+const highlightCurrentSong = () => {
+    const playlistSongElements = document.querySelectorAll('.playlist-song');
+    const songToHighlight = document.getElementById(`song-${userData?.currentSong?.id}`);
+
+    playlistSongElements.forEach((songEl) => {
+        songEl.removeAttribute("aria-current");
+        if (songToHighlight) {
+            songToHighlight.setAttribute("aria-current", "true");
+        }
+    });
+};
+// End of Highlight Current Song Function
 
 // End of functions
 
