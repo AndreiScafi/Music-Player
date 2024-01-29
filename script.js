@@ -105,6 +105,7 @@ const playSong = (id) => {
     userData.currentSong = song;
     playButton.classList.add('playing');
     highlightCurrentSong();
+    setPlayerDisplay();
     audio.play();
 };
 // End of play song function
@@ -169,6 +170,19 @@ const playPreviousSong = () => {
     }
 };
 // End of Play previous song function
+
+// Set Player Display function
+const setPlayerDisplay = () => {
+    const playingSong = document.getElementById('player-song-title');
+    const songArtist = document.getElementById('player-song-artist');
+
+    const currentTitle = userData?.currentSong?.title;
+    const currentArtist = userData?.currentSong?.artist;
+
+    playingSong.textContent = currentTitle ? currentTitle : "";
+    songArtist.textContent = currentArtist ? currentArtist : "";
+}
+// End of Set Player Display function
 
 // Highlight Current Song Function
 const highlightCurrentSong = () => {
