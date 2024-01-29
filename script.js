@@ -192,6 +192,21 @@ const setPlayerDisplay = () => {
 }
 // End of Set Player Display function
 
+// Shuffle Function
+
+const shuffle = () => {
+    userData?.songs.sort(() => Math.random() - 0.5);
+    userData.currentSong = null;
+    userData.songCurrentTime = 0;
+
+    renderSongs(userData?.songs);
+    pauseSong();
+    setPlayerDisplay();
+    setPlayButtonAccessibleText();
+}
+
+// End of Shuffle Function
+
 // Highlight Current Song Function
 const highlightCurrentSong = () => {
     const playlistSongElements = document.querySelectorAll('.playlist-song');
@@ -222,6 +237,8 @@ pauseButton.addEventListener('click', pauseSong);
 nextButton.addEventListener('click', playNextSong);
 
 previousButton.addEventListener('click', playPreviousSong);
+
+shuffleButton.addEventListener('click', shuffle);
 //End of Buttons
 
 renderSongs(userData?.songs);
